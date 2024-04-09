@@ -211,9 +211,12 @@ const Item = ({ item, index, onChange, dispatch, first, last }) => {
   const [isOpen, setOpen] = useState(false);
   const identifier = `data.jsonld["@graph"][1].seeks[${index}].`;
 
+  // Check if item and its properties exist before accessing them
+  const country = item?.availableAtOrFrom?.address?.addressCountry || '';
+
   return (
     <div className="my-4 border border-gray-200 rounded p-5">
-      <ItemHeading title={item.availableAtOrFrom?.address?.addressCountry || (item.description.substring(0, 10)+"...")} setOpen={setOpen} isOpen={isOpen} />
+      <ItemHeading title={country || (item.description.substring(0, 10) + "...")} setOpen={setOpen} isOpen={isOpen} />
 
       <div className={`mt-6 ${isOpen ? 'block' : 'hidden'}`}>
         <Form item={item} onChange={onChange} identifier={identifier} index={index} />
