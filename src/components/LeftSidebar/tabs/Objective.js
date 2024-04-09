@@ -213,7 +213,7 @@ const Item = ({ item, index, onChange, dispatch, first, last }) => {
 
   return (
     <div className="my-4 border border-gray-200 rounded p-5">
-      <ItemHeading title={item.availableAtOrFrom.address.addressCountry || (item.description.substring(0, 10)+"...")} setOpen={setOpen} isOpen={isOpen} />
+      <ItemHeading title={item.availableAtOrFrom?.address?.addressCountry || (item.description.substring(0, 10)+"...")} setOpen={setOpen} isOpen={isOpen} />
 
       <div className={`mt-6 ${isOpen ? 'block' : 'hidden'}`}>
         <Form item={item} onChange={onChange} identifier={identifier} index={index} />
